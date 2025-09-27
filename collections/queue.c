@@ -28,6 +28,8 @@ bool que_free(queue_t* self) {
 		return false;
 	}
 
+	pthread_cond_destroy(&self->cond);
+	pthread_mutex_destroy(&self->mutex);
 	free(self);
 	return true;
 }
