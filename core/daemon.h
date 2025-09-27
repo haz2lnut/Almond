@@ -4,6 +4,7 @@
 #include "queue.h"
 #include "network.h"
 #include "command_interface.h"
+#include "log.h"
 
 #define WORKER_MAX 10
 
@@ -15,6 +16,7 @@ typedef struct {
 	// Modules
 	network_t*						net;
 	command_interface_t*	ci;
+	log_t*								log;
 }daemon_t;
 
 typedef struct {
