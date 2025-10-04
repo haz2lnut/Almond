@@ -32,4 +32,7 @@ void		log_free(log_t* self);
 
 void logging(LOG_LEVEL level, const char* module, const char* fmt, ...);
 
+LOG_TYPE  get_log_type(const char* str);
+LOG_LEVEL get_log_level(const char* str);
+
 #endif //__LOG_H___

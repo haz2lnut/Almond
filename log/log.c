@@ -1,6 +1,7 @@
 #include "log.h"
 #include <stdlib.h>
 #include "daemon.h"
+#include <string.h>
 
 log_t* log_create() {
 	log_t* self = calloc(1, sizeof(log_t));
@@ -40,4 +41,31 @@ void logging(LOG_LEVEL level, const char* module, const char* fmt, ...) {
 	pthread_mutex_unlock(&self->mutex);
 
 	va_end(args);
+}
+
+LOG_TYPE  get_log_type(const char* str) {
+
+	if(strcmp(str, "std") == 0)
+		return LT_STD;
+	else if(strcmp(str, "syslog") == 0)
+		return LT_SYSLOG;
+	else if(strcmp(str, "file") == 0)
+		return LT_FILE;
+	else
+		return LT_STD;
+}
+
+LOG_LEVEL get_log_level(const char* str) {
+	if(strcmp(str, "all") == 0)
+		return LL_ALL;
+	else if(strcmp(str, "dbg") == 0)
+		return LL_DBG;
+	else if(strcmp(str, "warn") == 0)
+		return LL_WARN;
+	else if(strcmp(str, "info") == 0)
+		return LL_INFO;
+	else if(strcmp(str, "err") == 0)
+		return LL_ERR;
+	else
+		return LL_ALL;
 }
