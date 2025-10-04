@@ -6,7 +6,7 @@ INCLUDE_DIRS = $(sort $(dir $(SRCS)))
 
 CC = gcc
 CFLAGS = -Wall -Wextra -g $(addprefix -I, $(INCLUDE_DIRS))
-LDFLAGS =
+LDFLAGS = -lconfuse
 
 USER = $(shell whoami)
 ifeq ($(USER), root)

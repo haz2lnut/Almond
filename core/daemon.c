@@ -16,7 +16,7 @@ void daemon_create() {
 	signal(SIGINT, _daemon_signal_handler);
 
 	// Create modules
-	g_daemon.cnf = cnf_create();
+	g_daemon.cnf = cnf_create("conf/local.conf");
 	g_daemon.log = log_create();
 	g_daemon.net = net_create();
 	g_daemon.ci = ci_create();
